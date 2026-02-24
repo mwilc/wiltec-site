@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WilTec — Technology & Digital Transformation Consultancy</title>
+<meta name="description" content="WilTec helps businesses improve how they use technology — from streamlining operations to full digital transformation. Based in Telford, working with businesses everywhere.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafbfd;
+    --bg-white: #ffffff;
+    --bg-subtle: #f3f5f9;
+    --bg-card: #ffffff;
+    --border: #e4e8ef;
+    --border-light: #edf0f5;
+    --text: #1a1e2c;
+    --text-secondary: #4a5068;
+    --text-muted: #7c8298;
+    --accent: #2d6ff7;
+    --accent-hover: #1b5de0;
+    --accent-light: rgba(45, 111, 247, 0.08);
+    --font: 'Outfit', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --shadow-sm: 0 1px 3px rgba(26, 30, 44, 0.04), 0 1px 2px rgba(26, 30, 44, 0.03);
+    --shadow-md: 0 4px 16px rgba(26, 30, 44, 0.06), 0 1px 4px rgba(26, 30, 44, 0.04);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 0;
+    background: rgba(250, 251, 253, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  nav a.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  nav a.nav-link:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 0 80px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(45, 111, 247, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 111, 247, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 35%, black 10%, transparent 65%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 35%, black 10%, transparent 65%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 5%; right: 5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(45, 111, 247, 0.06) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5.5vw, 58px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 28px;
+    max-width: 720px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.1s forwards;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 44px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+    box-shadow: 0 4px 14px rgba(45, 111, 247, 0.25);
+  }
+
+  .hero-cta:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(45, 111, 247, 0.3);
+  }
+
+  .hero-cta svg {
+    width: 16px; height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .hero-cta:hover svg { transform: translateX(3px); }
+
+  /* Sections */
+  section { padding: 100px 0; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+
+  .section-alt {
+    background: var(--bg-white);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  /* Cards */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    transition: all 0.25s;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .service-card:hover {
+    border-color: rgba(45, 111, 247, 0.2);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .service-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .service-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Process */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    counter-reset: step;
+  }
+
+  .process-step {
+    padding: 32px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    counter-increment: step;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .process-step::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: var(--font);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    display: block;
+    margin-bottom: 20px;
+    color: rgba(45, 111, 247, 0.12);
+  }
+
+  .process-step h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .process-step p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .about-text p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .stat {
+    padding: 24px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+  }
+
+  .stat-number {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  /* Contact */
+  .contact-section { border-top: 1px solid var(--border-light); }
+
+  .contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px;
+    max-width: 600px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .contact-box p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border-light);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+
+  .contact-link:first-of-type { border-top: none; }
+  .contact-link:hover { color: var(--accent); }
+
+  .contact-link-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 15px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .contact-link-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .form-group label .optional {
+    font-weight: 300;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 300;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-subtle);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(45, 111, 247, 0.1);
+    background: var(--bg-white);
+  }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(45, 111, 247, 0.25);
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+
+  .form-submit:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(45, 111, 247, 0.3);
+  }
+
+  .form-submit svg {
+    width: 16px; height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .form-submit:hover svg { transform: translateX(3px); }
+
+  .contact-fallback {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .contact-fallback a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 400;
+  }
+
+  .contact-fallback a:hover {
+    text-decoration: underline;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-light);
+    background: var(--bg-subtle);
+  }
+
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .footer-location {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid, .process-steps { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    section { padding: 64px 0; }
+    .hero { padding: 100px 0 60px; min-height: auto; }
+    .contact-box { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { gap: 20px; }
+    footer .container { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    .stat-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="logo">Wil<span>Tec</span></a>
+    <div class="nav-links">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-label">Technology & Digital Transformation</div>
+    <h1>Get more out of <em>your business</em> technology</h1>
+    <p class="hero-desc">Making your technology work for you — so you can spend less time on the boring stuff and more time on what actually matters.</p>
+    <a href="#contact" class="hero-cta">
+      Let's have a chat
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</div>
+
+<section class="section-alt" id="services">
+  <div class="container">
+    <div class="section-label">What I help with</div>
+    <h2 class="section-title">Technology that works for you, not against you</h2>
+    <p class="section-desc">Still copying data between spreadsheets? Chasing the same updates across three different systems? Spending hours on reports that should take minutes? There's a better way.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <h3>Digital Transformation</h3>
+        <p>A clear-eyed look at how your business uses technology today, and a practical plan to get it where it needs to be. Not a buzzword exercise — real changes that make a real difference.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Workflow Improvement</h3>
+        <p>Freeing your team from the repetitive, time-consuming tasks that keep them from doing their best work. Better processes mean more time for the things that actually grow your business.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔗</div>
+        <h3>Systems & Integration</h3>
+        <p>Getting your tools talking to each other so information flows where it needs to go. No more double-entry, no more chasing updates, no more disconnected systems.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Data & Insights</h3>
+        <p>Turning the data you're already sitting on into something useful. Dashboards, reports, and real visibility into how your business is performing — so decisions are based on facts, not guesswork.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">☁️</div>
+        <h3>Cloud & Infrastructure</h3>
+        <p>Moving systems to the cloud, improving reliability, and making sure your technology scales as your business grows. Built properly from the start, not patched together later.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>AI & Smart Tooling</h3>
+        <p>Practical AI solutions that actually add value — not hype. From intelligent document processing to smart assistants that handle the routine stuff, so your team doesn't have to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">A partnership, not a project</h2>
+    <p class="section-desc">I want to understand your pain points, your blockers, the bottlenecks that slow everything down. If there's a way to use technology to support those areas, I'll map out what's possible — and you decide what makes sense.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <h3>We have a conversation</h3>
+        <p>A proper chat — coffee, call, whatever works. I want to hear how your operations actually run, what frustrates your team, and where things get stuck. The stuff you don't put on the website.</p>
+      </div>
+      <div class="process-step">
+        <h3>I map out a plan</h3>
+        <p>I'll put together a clear digital transformation plan — what to tackle first, the impact it'll have on your business, and the logistics of getting it implemented. No fluff, just a practical roadmap.</p>
+      </div>
+      <div class="process-step">
+        <h3>We make it happen</h3>
+        <p>I handle the implementation and work closely with your team to make sure everything lands properly. It's not done when it's built — it's done when your team is using it and seeing the benefit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Let's see what I can do for your business</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I've worked across <strong>public and private sector</strong> — from government bodies and healthcare organisations to global engineering firms and financial services. <strong>Building data platforms, transforming business operations, and connecting systems</strong> at scale.</p>
+        <p>Every business is different, but the challenges are usually the same — too much manual work, disconnected systems, and technology that isn't pulling its weight. That's where I come in.</p>
+      </div>
+      <div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-number">Public & Private</div>
+            <div class="stat-label">Sector experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">Cloud</div>
+            <div class="stat-label">Industry certified</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">Bachelors</div>
+            <div class="stat-label">Digital Technology Solutions</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Major projects delivered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Let's have a chat</h2>
+    <div class="contact-box">
+      <p>Whether you've got a specific challenge in mind or you're just curious about what's possible — let's connect. I'm genuinely looking to make an impact and work with some great businesses.</p>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="company">Company <span class="optional">(optional)</span></label>
+          <input type="text" id="company" name="company" placeholder="Your company name">
+        </div>
+        <div class="form-group">
+          <label for="message">How can I help?</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell me a bit about your business and what you're looking to improve..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Send message
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </button>
+      </form>
+      <div class="contact-fallback">
+        Or email me directly at <a href="mailto:matt@wiltec.uk">matt@wiltec.uk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 WilTec. 
