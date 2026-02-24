@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WilTec</title>
 <meta name="description" content="WilTec helps businesses improve how they use technology — from streamlining operations to full digital transformation. Based in Telford, working with businesses everywhere.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -323,55 +322,6 @@
     font-weight: 300;
   }
 
-  /* About */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-  }
-
-  .about-text p {
-    font-size: 16px;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .about-text p strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin-top: 36px;
-  }
-
-  .stat {
-    padding: 24px;
-    background: var(--bg-subtle);
-    border: 1px solid var(--border-light);
-    border-radius: 10px;
-  }
-
-  .stat-number {
-    font-family: var(--mono);
-    font-size: 26px;
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
-
-  .stat-label {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 300;
-  }
-
   /* Contact */
   .contact-section { border-top: 1px solid var(--border-light); }
 
@@ -390,42 +340,6 @@
     line-height: 1.7;
     font-weight: 300;
     margin-bottom: 32px;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 0;
-    border-top: 1px solid var(--border-light);
-    text-decoration: none;
-    color: var(--text);
-    font-size: 15px;
-    transition: color 0.2s;
-  }
-
-  .contact-link:first-of-type { border-top: none; }
-  .contact-link:hover { color: var(--accent); }
-
-  .contact-link-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    background: var(--accent-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 15px;
-    color: var(--accent);
-    font-weight: 500;
-  }
-
-  .contact-link-label {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-family: var(--mono);
-    letter-spacing: 1px;
-    text-transform: uppercase;
   }
 
   .contact-form {
@@ -556,15 +470,6 @@
     font-weight: 300;
   }
 
-  .footer-location {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -572,7 +477,6 @@
 
   @media (max-width: 768px) {
     .services-grid, .process-steps { grid-template-columns: 1fr; }
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
     section { padding: 64px 0; }
     .hero { padding: 100px 0 60px; min-height: auto; }
     .contact-box { padding: 32px 24px; }
@@ -583,7 +487,6 @@
 
   @media (max-width: 480px) {
     .container { padding: 0 20px; }
-    .stat-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -594,7 +497,6 @@
     <a href="#" class="logo">Wil<span>Tec</span></a>
     <div class="nav-links">
       <a href="#services" class="nav-link">Services</a>
-      <a href="#about" class="nav-link">About</a>
       <a href="#contact" class="nav-link">Get in touch</a>
     </div>
   </div>
@@ -660,7 +562,7 @@
     <div class="process-steps">
       <div class="process-step">
         <h3>Discovery</h3>
-        <p>I person, over a call, whatever works. Finding out how your operations actually run, what frustrates your team, and where things get stuck. The stuff you don't put on the website.</p>
+        <p>In person, over a call, whatever works. Finding out how your operations actually run, what frustrates your team, and where things get stuck. The stuff you don't put on the website.</p>
       </div>
       <div class="process-step">
         <h3>Analysis</h3>
@@ -669,39 +571,6 @@
       <div class="process-step">
         <h3>Execution</h3>
         <p>I handle the implementation and work closely with your team to make sure everything lands properly. It's not done when it's built — it's done when your team is using it and seeing the benefit.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-alt" id="about">
-  <div class="container">
-    <div class="section-label">About</div>
-    <h2 class="section-title">Who am I?</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>Proven track record across diverse clients: <strong>public & private sector</strong>, healthcare, retail, manufacturing, and service industries. <strong>Built robust data platforms</strong>, streamlined business operations, and connected complex systems at enterprise scale.</p>
-        <p>While each business is unique, the core challenges remain consistent — too much repetitive manual effort, fragmented systems, and technology that fails to deliver full value. Solutions focused on addressing these directly for tangible, lasting impact.</p>
-      </div>
-      <div>
-        <div class="stat-row">
-          <div class="stat">
-            <div class="stat-number">Public & Private</div>
-            <div class="stat-label">Sector experience</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">Cloud</div>
-            <div class="stat-label">Industry certified</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">Bachelors</div>
-            <div class="stat-label">Digital Technology Solutions</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">Major projects delivered</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -746,4 +615,9 @@
 
 <footer>
   <div class="container">
-    <p>&copy; 2026 WilTec. 
+    <p>&copy; 2026 WilTec.</p>
+  </div>
+</footer>
+
+</body>
+</html>
