@@ -488,6 +488,98 @@
   @media (max-width: 480px) {
     .container { padding: 0 20px; }
   }
+
+  /* ---- SUCCESS STORIES ---- */
+  .stories-section {
+    background: var(--bg);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .stories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .story-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 26px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s;
+    position: relative;
+  }
+
+  .story-card:hover {
+    border-color: rgba(45, 111, 247, 0.2);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .story-sector {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .story-sector::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  .story-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .story-card p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .story-card .story-outcome {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .story-card .story-outcome .outcome-icon {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(74, 222, 128, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .stories-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -572,6 +664,57 @@
         <h3>Execution</h3>
         <p>I handle the implementation and work closely with your team to make sure everything lands properly. It's not done when it's built — it's done when your team is using it and seeing the benefit.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="stories-section">
+  <div class="container">
+    <div class="section-label">Success stories</div>
+    <h2 class="section-title">Delivered, not just discussed</h2>
+    <p class="section-desc">A few highlights from recent work — across enterprise platforms and independent projects. Every one of these shipped.</p>
+    <div class="stories-grid">
+
+      <div class="story-card">
+        <div class="story-sector">Financial Services</div>
+        <h3>Replacing Expensive Software with a Bespoke Solution</h3>
+        <p>A client was losing a significant chunk of their profits to third-party software fees, with no way to customise how things worked. Built a fully bespoke system that replaced the costly tools entirely — no ongoing fees, no profit-sharing, and full control to adapt as the business grows.</p>
+        <div class="story-outcome">
+          <span class="outcome-icon">✓</span>
+          Third-party costs eliminated — full profit retention from day one
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-sector">Healthcare</div>
+        <h3>Building a Reporting Platform from the Ground Up</h3>
+        <p>The health sector needed a way to bring data together and visualise it clearly for decision-makers. Built a platform designed to be updated and reconfigured easily — so the organisation could adapt it as their needs changed, without starting over.</p>
+        <div class="story-outcome">
+          <span class="outcome-icon">✓</span>
+          A flexible platform that grew with the organisation
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-sector">Government</div>
+        <h3>Fixing a Critical Reporting System</h3>
+        <p>A major government department relied on a platform for its data and reporting that had issues with reliability, cost, and security. Stepped in, sorted the problems, and kept things running smoothly through a high-pressure delivery period.</p>
+        <div class="story-outcome">
+          <span class="outcome-icon">✓</span>
+          More reliable, more secure, and cheaper to run
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-sector">Retail</div>
+        <h3>Bringing Order to a Fragmented System</h3>
+        <p>A high-profile retail client had a data platform that had become messy and difficult to manage. Brought structure to the process, cleaned things up, and made sure updates could go live safely without the usual firefighting.</p>
+        <div class="story-outcome">
+          <span class="outcome-icon">✓</span>
+          Stable releases and a system the team could trust
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
