@@ -489,48 +489,49 @@
     .container { padding: 0 20px; }
   }
 
-  /* ---- SUCCESS STORIES ---- */
+  /* ---- SUCCESS STORIES CAROUSEL ---- */
   .stories-section {
     background: var(--bg);
     border-top: 1px solid var(--border-light);
   }
 
-  .stories-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .story-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 26px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.25s;
+  .carousel-wrapper {
     position: relative;
   }
 
-  .story-card:hover {
-    border-color: rgba(45, 111, 247, 0.2);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+  .carousel-slide {
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px 36px;
+    box-shadow: var(--shadow-sm);
+    animation: carouselFade 0.35s ease;
   }
 
-  .story-sector {
+  .carousel-slide.active {
+    display: block;
+  }
+
+  @keyframes carouselFade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .carousel-slide .story-sector {
     font-family: var(--mono);
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
     gap: 6px;
   }
 
-  .story-sector::before {
+  .carousel-slide .story-sector::before {
     content: '';
     width: 5px; height: 5px;
     border-radius: 50%;
@@ -538,47 +539,94 @@
     opacity: 0.5;
   }
 
-  .story-card h3 {
-    font-size: 16px;
+  .carousel-slide h3 {
+    font-size: 20px;
     font-weight: 600;
     color: var(--text);
-    letter-spacing: -0.3px;
-    margin-bottom: 10px;
+    letter-spacing: -0.4px;
+    margin-bottom: 14px;
     line-height: 1.3;
   }
 
-  .story-card p {
-    font-size: 13.5px;
+  .carousel-slide p {
+    font-size: 15px;
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.75;
     font-weight: 300;
+    max-width: 640px;
   }
 
-  .story-card .story-outcome {
-    margin-top: 16px;
-    padding-top: 14px;
+  .carousel-slide .story-outcome {
+    margin-top: 24px;
+    padding-top: 20px;
     border-top: 1px solid var(--border-light);
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text);
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
-  .story-card .story-outcome .outcome-icon {
-    width: 20px; height: 20px;
+  .carousel-slide .story-outcome .outcome-icon {
+    width: 22px; height: 22px;
     border-radius: 50%;
     background: rgba(74, 222, 128, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 12px;
     flex-shrink: 0;
   }
 
-  @media (max-width: 768px) {
-    .stories-grid { grid-template-columns: 1fr; }
+  .carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .carousel-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .carousel-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .carousel-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    padding: 0;
+  }
+
+  .carousel-dot.active {
+    background: var(--accent);
+    width: 24px;
+    border-radius: 4px;
   }
 </style>
 </head>
@@ -673,9 +721,19 @@
     <div class="section-label">Success stories</div>
     <h2 class="section-title">Delivered, not just discussed</h2>
     <p class="section-desc">A few highlights from recent work — across enterprise platforms and independent projects. Every one of these shipped.</p>
-    <div class="stories-grid">
+    <div class="carousel-wrapper" id="storyCarousel">
 
-      <div class="story-card">
+      <div class="carousel-slide active">
+        <div class="story-sector">Manufacturing</div>
+        <h3>Automating Label Production on the Shop Floor</h3>
+        <p>A manufacturing firm was creating product labels by hand — copying data from printed work orders into spreadsheets, then importing into label software. Slow, error-prone, and only one person knew how to do it. Built a tool that reads work orders and generates print-ready label files automatically.</p>
+        <div class="story-outcome">
+          <span class="outcome-icon">✓</span>
+          Manual errors eliminated — anyone on the team can now produce labels in seconds
+        </div>
+      </div>
+
+      <div class="carousel-slide">
         <div class="story-sector">Financial Services</div>
         <h3>Replacing Expensive Software with a Bespoke Solution</h3>
         <p>A client was losing a significant chunk of their profits to third-party software fees, with no way to customise how things worked. Built a fully bespoke system that replaced the costly tools entirely — no ongoing fees, no profit-sharing, and full control to adapt as the business grows.</p>
@@ -685,7 +743,7 @@
         </div>
       </div>
 
-      <div class="story-card">
+      <div class="carousel-slide">
         <div class="story-sector">Healthcare</div>
         <h3>Building a Reporting Platform from the Ground Up</h3>
         <p>The health sector needed a way to bring data together and visualise it clearly for decision-makers. Built a platform designed to be updated and reconfigured easily — so the organisation could adapt it as their needs changed, without starting over.</p>
@@ -695,7 +753,7 @@
         </div>
       </div>
 
-      <div class="story-card">
+      <div class="carousel-slide">
         <div class="story-sector">Government</div>
         <h3>Fixing a Critical Reporting System</h3>
         <p>A major government department relied on a platform for its data and reporting that had issues with reliability, cost, and security. Stepped in, sorted the problems, and kept things running smoothly through a high-pressure delivery period.</p>
@@ -705,7 +763,7 @@
         </div>
       </div>
 
-      <div class="story-card">
+      <div class="carousel-slide">
         <div class="story-sector">Retail</div>
         <h3>Bringing Order to a Fragmented System</h3>
         <p>A high-profile retail client had a data platform that had become messy and difficult to manage. Brought structure to the process, cleaned things up, and made sure updates could go live safely without the usual firefighting.</p>
@@ -715,9 +773,42 @@
         </div>
       </div>
 
+      <div class="carousel-nav">
+        <button class="carousel-btn" onclick="changeSlide(-1)" aria-label="Previous">←</button>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" onclick="goToSlide(0)" aria-label="Story 1"></button>
+          <button class="carousel-dot" onclick="goToSlide(1)" aria-label="Story 2"></button>
+          <button class="carousel-dot" onclick="goToSlide(2)" aria-label="Story 3"></button>
+          <button class="carousel-dot" onclick="goToSlide(3)" aria-label="Story 4"></button>
+          <button class="carousel-dot" onclick="goToSlide(4)" aria-label="Story 5"></button>
+        </div>
+        <button class="carousel-btn" onclick="changeSlide(1)" aria-label="Next">→</button>
+      </div>
+
     </div>
   </div>
 </section>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+
+  function goToSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  function changeSlide(dir) {
+    let next = currentSlide + dir;
+    if (next < 0) next = slides.length - 1;
+    if (next >= slides.length) next = 0;
+    goToSlide(next);
+  }
+</script>
 
 <section class="contact-section" id="contact">
   <div class="container">
