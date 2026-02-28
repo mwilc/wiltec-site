@@ -282,6 +282,40 @@
   }
 
   /* Process */
+  .process-section {
+    background: linear-gradient(135deg, #1a1e2c 0%, #252a3e 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .process-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(45, 111, 247, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 111, 247, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+  }
+
+  .process-section .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-section .section-label {
+    color: rgba(255,255,255,0.35);
+  }
+
+  .process-section .section-title {
+    color: #fff;
+  }
+
+  .process-section .section-desc {
+    color: rgba(255,255,255,0.55);
+  }
+
   .process-steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -291,11 +325,17 @@
 
   .process-step {
     padding: 32px 28px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     counter-increment: step;
-    box-shadow: var(--shadow-sm);
+    transition: all 0.25s;
+  }
+
+  .process-step:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(45, 111, 247, 0.3);
+    transform: translateY(-3px);
   }
 
   .process-step::before {
@@ -306,18 +346,19 @@
     line-height: 1;
     display: block;
     margin-bottom: 20px;
-    color: rgba(45, 111, 247, 0.35);
+    color: rgba(45, 111, 247, 0.4);
   }
 
   .process-step h3 {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px;
+    color: #fff;
   }
 
   .process-step p {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: rgba(255,255,255,0.6);
     line-height: 1.65;
     font-weight: 300;
   }
@@ -628,6 +669,60 @@
     width: 24px;
     border-radius: 4px;
   }
+
+  /* ---- WHY SECTION ---- */
+  .why-section {
+    background: linear-gradient(135deg, #1a1e2c 0%, #252a3e 100%);
+    padding: 72px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(45, 111, 247, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 111, 247, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+  }
+
+  .why-content {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+  }
+
+  .why-content .section-label {
+    color: rgba(255,255,255,0.35);
+  }
+
+  .why-content h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.6px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+
+  .why-content p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .why-content p + p {
+    margin-top: 16px;
+  }
+
+  .why-content strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -694,7 +789,7 @@
   </div>
 </section>
 
-<section>
+<section class="process-section">
   <div class="container">
     <div class="section-label">How it works</div>
     <h2 class="section-title">A partnership, not a project</h2>
@@ -809,6 +904,17 @@
     goToSlide(next);
   }
 </script>
+
+<div class="why-section">
+  <div class="container">
+    <div class="why-content">
+      <div class="section-label">Why WilTec</div>
+      <h2>Enterprise-grade technology shouldn't only be for enterprises</h2>
+      <p>There's a massive gap between large corporations and smaller businesses when it comes to technology. The organisations I've delivered for have dedicated teams, six-figure budgets, and enterprise platforms to automate their operations. <strong>A business with 20 staff has the same problems — but none of those resources.</strong></p>
+      <p>That's why I started WilTec. To take everything I've learned delivering technology for large organisations and apply it where it makes the biggest difference — <strong>smaller businesses where one automation can give someone an entire day back.</strong></p>
+    </div>
+  </div>
+</div>
 
 <section class="contact-section" id="contact">
   <div class="container">
